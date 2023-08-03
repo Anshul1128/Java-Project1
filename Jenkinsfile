@@ -16,12 +16,13 @@ pipeline{
             steps{
             gitCheckout(
                 branch: "master",
-                url: "https://github.com/Anshul1128/java-app-project.git"
+                url: "https://github.com/Anshul1128/Java-Project1.git"
             )
             }
         }
             
     }
+
     stage('Unit Test maven'){
          
     when { expression {  params.action == 'create' } }

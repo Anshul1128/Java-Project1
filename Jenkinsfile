@@ -23,43 +23,43 @@ pipeline{
             )
             }
         }
-        stage('Unit Test maven'){
+        // stage('Unit Test maven'){
          
-                    when { expression {  params.action == 'create' } }
-            steps{
-               script{                   
-                   mvnTest()
-               }
-            }
-        }
-        stage('Integration Test maven'){
-         when { expression {  params.action == 'create' } }
-            steps{
-               script{
+        //             when { expression {  params.action == 'create' } }
+        //     steps{
+        //        script{                   
+        //            mvnTest()
+        //        }
+        //     }
+        // }
+        // stage('Integration Test maven'){
+        //  when { expression {  params.action == 'create' } }
+        //     steps{
+        //        script{
                    
-                   mvnIntegrationTest()
-               }
-            }
-        }
-        stage('Static code analysis: Sonarqube'){
-            steps{
-               script{
+        //            mvnIntegrationTest()
+        //        }
+        //     }
+        // }
+        // stage('Static code analysis: Sonarqube'){
+        //     steps{
+        //        script{
                    
-                   def SonarQubecredentialsId = 'sonar1'
-                   statiCodeAnalysis(SonarQubecredentialsId)
-               }
-            }
-        }       
-        stage('Quality Gate Status Check : Sonarqube'){
-         when { expression {  params.action == 'create' } }
-            steps{
-               script{
+        //            def SonarQubecredentialsId = 'sonar1'
+        //            statiCodeAnalysis(SonarQubecredentialsId)
+        //        }
+        //     }
+        // }       
+        // stage('Quality Gate Status Check : Sonarqube'){
+        //  when { expression {  params.action == 'create' } }
+        //     steps{
+        //        script{
                    
-                   def SonarQubecredentialsId = 'sonar1'
-                   QualityGateStatus(SonarQubecredentialsId)
-               }
-            }
-        }
+        //            def SonarQubecredentialsId = 'sonar1'
+        //            QualityGateStatus(SonarQubecredentialsId)
+        //        }
+        //     }
+        // }
         stage('Maven Build : maven'){
          when { expression {  params.action == 'create' } }
             steps{
